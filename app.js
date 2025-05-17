@@ -17,7 +17,8 @@ const stripe = require("stripe")(
   "sk_test_51OI9XuSDvaj3CBe9tRkyOj2Ph18rS0LFuckcwSCsTJS5aoLDHz9kKpmuaBrddOl9k7AXew87ONYY0IaXyPHXXQV600m6FQ4XH6"
 );
 
-mongoose.connect('mongodb://127.0.0.1:27017/ecommerce-data')
+const MONGO_URI = process.env.MONGO_URI;
+mongoose.connect(MONGO_URI)
 .then(()=>{console.log("DB connected")})
 .catch((err)=>{console.log(err)})
 
@@ -87,5 +88,6 @@ app.get('/', (req, res) => {
 });
 
 app.listen(port, () => {
-  console.log("Live at port ${port}");
+  const PORT = process.env.PORT;
+  console.log(`Live at port ${port}`);
 });
