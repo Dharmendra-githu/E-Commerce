@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const Product = require('./models/product')
-
-mongoose.connect("mongodb://127.0.0.1:27017/ecommerce-data")
+console.log(":: seeding file called...")
+mongoose.connect(process.env.MONGO_URI)
 .then(()=>{console.log("DB Conneted!!!")})
 .catch((err)=>{console.log(err);})
 
